@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+    integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+  <title>Digital Twin Device</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    body {
+      padding-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Digital-Twin "Onboard UI"</h1>
+    </div>
+    <button id="create_device" type="button" class="btn btn-primary">Create Device</button>
+    <button id="add_component" type="button" class="btn btn-primary">Add Component</button>
+  </div>
+
+  <script>
+
+    $("#create_device").click(async function () {
+      const response = await fetch('http://localhost:3000/create_device');
+      const result = await response.json(); //extract JSON from the http response
+      console.log(JSON.stringify(result));
+    });
+
+    $("#add_component").click(async function () {
+      const response = await fetch('http://localhost:3000/add_component');
+      const result = await response.json(); //extract JSON from the http response
+      console.log(JSON.stringify(result));
+    });
+  </script>
+
+</body>
+
+</html>
