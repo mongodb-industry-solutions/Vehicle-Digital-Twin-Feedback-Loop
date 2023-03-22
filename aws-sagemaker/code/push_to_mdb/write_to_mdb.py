@@ -14,6 +14,7 @@ def handler(event, context):
             "db": "XXXX", # Update your database name
             "col": "XXXX" # Update your collection name
         }
+
         
         ENDPOINT_NAME= values['model-endpoint'] 
         REGION_NAME = values['region-name']
@@ -22,18 +23,33 @@ def handler(event, context):
         MONGO_COL = values['col']
 
         #Connect to MongoDB Atlas
-        client = pymongo.MongoClient(MONGO_ENDPOINT)
-        db = client[MONGO_DB]
+        try: 
+            client = pymongo.MongoClient(MONGO_ENDPOINT)
+            db = client[MONGO_DB]
+            print("Connected to MongoDB Atlas")
+        except pymongo.errors.ConnectionFailure as e:
+            print("Could not connect to MongoDB Atlas: %s" % e)
+            exit()
+        
+        
+        print("prediction: " + str(predicted_value))
 
-        updateResult = db[MONGO_COL].update_one(
-            {"vin" : vin},
-            {
-                "$set": {"prediction": predicted_value, "status": "Success"}
-            }
-        )
-        return "Updated : {} count : {}".format(predicted_value, updateResult.modified_count)
-    
+        print("VIN: " + str(vin))
+
+
+        try: 
+            updateResult = db[MONGO_COL].update_one({"vin" : vin},{"$set": {"prediction": predicted_value, "error_message":"NotApplicable", "status": "Success"}})
+            print("updated the document successfully")
+            print("Matched %d documents." % updateResult.matched_count)
+            print("Modified %d documents." % updateResult.modified_count)
+            return "Updated : {} count : {}".format(predicted_value, updateResult.modified_count)
+        
+        except pymongo.errors.PyMongoError as e:
+            print("An error occurred while updating the document: %s" % e)
+            exit()
+
     except Exception as e:
+        print("error" + str(e))
         updateResult = db[MONGO_COL].update_one(
             {"vin" : vin},
             {
@@ -41,3 +57,4 @@ def handler(event, context):
             }
         )
         raise e
+   
