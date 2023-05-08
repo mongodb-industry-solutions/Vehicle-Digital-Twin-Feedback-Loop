@@ -1,4 +1,6 @@
 import pymongo
+from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure, OperationFailure
 
 def handler(event, context):
     try:
@@ -6,55 +8,30 @@ def handler(event, context):
         predicted_value = event['detail']['predicted_value']
         vin = event['detail']['vin']
 
-        # Setup the variables for MongoDB Atlas Connection
-        values = {
-            "mongo-endpoint": "mongodb+srv://XXXX:XXXX@XXXX/?retryWrites=true&w=majority", # Update with your MongoDB connection string
-            "region-name": "XXXX",  # Update your region
-            "model-endpoint": "sagemaker-soln-XXXX",  # Update your sagemaker model endpoint
-            "db": "XXXX", # Update your database name
-            "col": "XXXX" # Update your collection name
-        }
-
-        
-        ENDPOINT_NAME= values['model-endpoint'] 
-        REGION_NAME = values['region-name']
-        MONGO_ENDPOINT = values['mongo-endpoint']
-        MONGO_DB = values['db']
-        MONGO_COL = values['col']
-
-        #Connect to MongoDB Atlas
-        try: 
-            client = pymongo.MongoClient(MONGO_ENDPOINT)
-            db = client[MONGO_DB]
-            print("Connected to MongoDB Atlas")
-        except pymongo.errors.ConnectionFailure as e:
-            print("Could not connect to MongoDB Atlas: %s" % e)
-            exit()
-        
-        
         print("prediction: " + str(predicted_value))
-
         print("VIN: " + str(vin))
 
+        # Set up MongoDB Atlas connection
+        try:
+            client = MongoClient('mongodb+srv://<username>:<password>@<servername>/?retryWrites=true&w=majority')
+            db = client['Vehicles']
+            collection = db['Sagemaker']
+        except ConnectionFailure:
+            print('Failed to connect to MongoDB Atlas.')
+        except OperationFailure as error:
+            print(f'Failed to authenticate with MongoDB Atlas: {error}')
 
-        try: 
-            updateResult = db[MONGO_COL].update_one({"vin" : vin},{"$set": {"prediction": predicted_value, "error_message":"NotApplicable", "status": "Success"}})
-            print("updated the document successfully")
-            print("Matched %d documents." % updateResult.matched_count)
-            print("Modified %d documents." % updateResult.modified_count)
-            return "Updated : {} count : {}".format(predicted_value, updateResult.modified_count)
-        
-        except pymongo.errors.PyMongoError as e:
-            print("An error occurred while updating the document: %s" % e)
-            exit()
+        # Define the document to update or insert
+        filter = {'vin': str(vin)}
+        update = {'$set': {'prediction': str(predicted_value)}}
+
+        # Perform the upsert operation
+        try:
+            result = collection.update_one(filter, update, upsert=True)
+            print(f'{result.modified_count} document(s) updated.')
+        except OperationFailure as error:
+            print(f'Failed to update or insert document: {error}')
 
     except Exception as e:
         print("error" + str(e))
-        updateResult = db[MONGO_COL].update_one(
-            {"vin" : vin},
-            {
-                "$set": {"error_message": str(e), "status": "Failure"}
-            }
-        )
         raise e
-   
