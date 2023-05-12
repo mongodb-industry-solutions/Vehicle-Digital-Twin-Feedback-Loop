@@ -14,7 +14,7 @@ def handler(event, context):
         # Set up MongoDB Atlas connection
         try:
             client = MongoClient('mongodb+srv://<username>:<password>@<servername>/?retryWrites=true&w=majority')
-            db = client['Vehicles']
+            db = client['Integrations']
             collection = db['Sagemaker']
         except ConnectionFailure:
             print('Failed to connect to MongoDB Atlas.')
