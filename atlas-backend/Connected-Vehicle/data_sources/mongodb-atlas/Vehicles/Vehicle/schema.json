@@ -1,11 +1,131 @@
 {
-    "bsonType": "object",
     "properties": {
+        "CurrentLocation": {
+            "properties": {
+                "Altitude": {
+                    "bsonType": "double"
+                },
+                "GNSSReceiver_FixType": {
+                    "bsonType": "string"
+                },
+                "GNSSReceiver_MountingPosition_X": {
+                    "bsonType": "long"
+                },
+                "GNSSReceiver_MountingPosition_Y": {
+                    "bsonType": "long"
+                },
+                "GNSSReceiver_MountingPosition_Z": {
+                    "bsonType": "long"
+                },
+                "Heading": {
+                    "bsonType": "double"
+                },
+                "HorizontalAccuracy": {
+                    "bsonType": "double"
+                },
+                "Latitude": {
+                    "bsonType": "double"
+                },
+                "Longitude": {
+                    "bsonType": "double"
+                },
+                "Timestamp": {
+                    "bsonType": "string"
+                },
+                "VerticalAccuracy": {
+                    "bsonType": "double"
+                }
+            },
+            "required": [],
+            "title": "Vehicle_CurrentLocation",
+            "type": "object"
+        },
+        "IsMoving": {
+            "bsonType": "bool"
+        },
+        "Speed": {
+            "bsonType": "double"
+        },
+        "StartTime": {
+            "bsonType": "string"
+        },
+        "TraveledDistanceSinceStart": {
+            "bsonType": "double"
+        },
+        "VehicleIdentification": {
+            "properties": {
+                "AcrissCode": {
+                    "bsonType": "string"
+                },
+                "BodyType": {
+                    "bsonType": "string"
+                },
+                "Brand": {
+                    "bsonType": "string"
+                },
+                "DateVehicleFirstRegistered": {
+                    "bsonType": "string"
+                },
+                "KnownVehicleDamages": {
+                    "bsonType": "string"
+                },
+                "MeetsEmissionStandard": {
+                    "bsonType": "string"
+                },
+                "Model": {
+                    "bsonType": "string"
+                },
+                "OptionalExtras": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "string"
+                    }
+                },
+                "Owner": {
+                    "bsonType": "objectId"
+                },
+                "ProductionDate": {
+                    "bsonType": "string"
+                },
+                "PurchaseDate": {
+                    "bsonType": "string"
+                },
+                "VIN": {
+                    "bsonType": "string"
+                },
+                "VehicleConfiguration": {
+                    "bsonType": "string"
+                },
+                "VehicleInteriorColor": {
+                    "bsonType": "string"
+                },
+                "VehicleInteriorType": {
+                    "bsonType": "string"
+                },
+                "VehicleModelDate": {
+                    "bsonType": "string"
+                },
+                "VehicleSeatingCapacity": {
+                    "bsonType": "long"
+                },
+                "VehicleSpecialUsage": {
+                    "bsonType": "string"
+                },
+                "WMI": {
+                    "bsonType": "string"
+                },
+                "Year": {
+                    "bsonType": "long"
+                }
+            },
+            "required": [],
+            "title": "Vehicle_VehicleIdentification",
+            "type": "object"
+        },
         "_id": {
             "bsonType": "string"
         },
         "battery": {
-            "bsonType": "object",
             "properties": {
                 "capacity": {
                     "bsonType": "long"
@@ -24,12 +144,12 @@
                 }
             },
             "required": [],
-            "title": "Battery"
+            "title": "Battery",
+            "type": "object"
         },
         "commands": {
             "bsonType": "array",
             "items": {
-                "bsonType": "object",
                 "properties": {
                     "command": {
                         "bsonType": "string"
@@ -42,7 +162,8 @@
                     }
                 },
                 "required": [],
-                "title": "Command"
+                "title": "Command",
+                "type": "object"
             }
         },
         "components": {
@@ -50,6 +171,9 @@
             "items": {
                 "bsonType": "objectId"
             }
+        },
+        "current": {
+            "bsonType": "long"
         },
         "isOn": {
             "bsonType": "bool"
@@ -66,9 +190,10 @@
     },
     "required": [
         "_id",
-        "name",
         "isOn",
+        "name",
         "owner_id"
     ],
-    "title": "Vehicle"
+    "title": "Vehicle",
+    "type": "object"
 }

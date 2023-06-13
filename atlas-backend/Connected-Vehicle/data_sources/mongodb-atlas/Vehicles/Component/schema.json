@@ -1,5 +1,4 @@
 {
-    "bsonType": "object",
     "properties": {
         "_id": {
             "bsonType": "objectId"
@@ -12,7 +11,9 @@
         }
     },
     "required": [
+        "_id",
         "owner_id"
     ],
-    "title": "Component"
+    "title": "Component",
+    "type": "object"
 }
