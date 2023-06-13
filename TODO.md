@@ -1,8 +1,9 @@
 # Project Roadmap/TODOs
 
-## Overall: TODO
+## Overall Ideas: TODO
 
-- [ ] Add over the air update functionality
+- [ ] Add over the air update functionality (Sync with partner SAs)
+- [ ] Add tiered sync for the onboard part and connect the cpp and typescript parts to it
 - [ ] Add other cloud provider integrations
 - [ ] Continuously monitor Realm/Atlas roadmap and add/emphasize new features
 
@@ -11,6 +12,10 @@
 - [ ] Udate data model to better align with VSS through deeper nesting: [HELP-46424](https://jira.mongodb.org/browse/HELP-46424)
 - [ ] Extend the application with the upcoming geospatial features: [RPM-338](https://jira.mongodb.org/browse/RPM-338)
 - [ ] Look into using asymmetric sync with stream processing [Architecture](https://docs.google.com/presentation/d/1L9Cxd7dfBd7OP4TzxlKzcMUk9Xy3CGnnspsldgQctNU/edit#slide=id.g23cefc6a482_0_7)
+
+## Mobile-Swift: TODO
+
+- [ ] Once the Realm geolocation features are implemented, add automatic location updates to the already added map view and integrate it into the gui.
 
 
 ## Observer-CPP: TODO
