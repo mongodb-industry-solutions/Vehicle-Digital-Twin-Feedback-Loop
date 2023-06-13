@@ -1,0 +1,334 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1526DF632A320F05001E3920 /* Location.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 151898CC2A320AF90080CEFC /* Location.xml */; };
+		254107F02A0A92A300A7CEC1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 254107EF2A0A92A300A7CEC1 /* main.cpp */; };
+		254107F82A0A937A00A7CEC1 /* realm-cpp-sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 254107F72A0A937A00A7CEC1 /* realm-cpp-sdk */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		254107EA2A0A92A300A7CEC1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		254107FA2A0A946300A7CEC1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				1526DF632A320F05001E3920 /* Location.xml in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		151898CC2A320AF90080CEFC /* Location.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.xml; sourceTree = "<group>"; };
+		254107EC2A0A92A300A7CEC1 /* gps-cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "gps-cpp"; sourceTree = BUILT_PRODUCTS_DIR; };
+		254107EF2A0A92A300A7CEC1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		254107E92A0A92A300A7CEC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				254107F82A0A937A00A7CEC1 /* realm-cpp-sdk in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		254107E32A0A92A200A7CEC1 = {
+			isa = PBXGroup;
+			children = (
+				254107EE2A0A92A300A7CEC1 /* gps-cpp */,
+				254107ED2A0A92A300A7CEC1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		254107ED2A0A92A300A7CEC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				254107EC2A0A92A300A7CEC1 /* gps-cpp */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		254107EE2A0A92A300A7CEC1 /* gps-cpp */ = {
+			isa = PBXGroup;
+			children = (
+				254107EF2A0A92A300A7CEC1 /* main.cpp */,
+				151898CC2A320AF90080CEFC /* Location.xml */,
+			);
+			path = "gps-cpp";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		254107EB2A0A92A300A7CEC1 /* gps-cpp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 254107F32A0A92A300A7CEC1 /* Build configuration list for PBXNativeTarget "gps-cpp" */;
+			buildPhases = (
+				254107E82A0A92A300A7CEC1 /* Sources */,
+				254107E92A0A92A300A7CEC1 /* Frameworks */,
+				254107EA2A0A92A300A7CEC1 /* CopyFiles */,
+				254107FA2A0A946300A7CEC1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "gps-cpp";
+			packageProductDependencies = (
+				254107F72A0A937A00A7CEC1 /* realm-cpp-sdk */,
+			);
+			productName = FastDataUnit;
+			productReference = 254107EC2A0A92A300A7CEC1 /* gps-cpp */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		254107E42A0A92A200A7CEC1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					254107EB2A0A92A300A7CEC1 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = 254107E72A0A92A200A7CEC1 /* Build configuration list for PBXProject "gps-cpp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 254107E32A0A92A200A7CEC1;
+			packageReferences = (
+				254107F62A0A937A00A7CEC1 /* XCRemoteSwiftPackageReference "realm-cpp" */,
+			);
+			productRefGroup = 254107ED2A0A92A300A7CEC1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				254107EB2A0A92A300A7CEC1 /* gps-cpp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		254107E82A0A92A300A7CEC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				254107F02A0A92A300A7CEC1 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		254107F12A0A92A300A7CEC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		254107F22A0A92A300A7CEC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		254107F42A0A92A300A7CEC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+					"REALM_VERSION_EXTRA=\"\"",
+					"REALM_VERSION_PATCH=1",
+					"REALM_VERSION_MAJOR=0",
+					"REALM_VERSION_STRING=\"0.1\"",
+					"REALM_VERSION_MINOR=0",
+					"REALM_ENABLE_ASSERTIONS=1",
+					"REALM_ENABLE_ENCRYPTION=1",
+					"REALM_DEBUG=1",
+					REALM_NO_CONFIG,
+					"REALM_ENABLE_SYNC=1",
+					"REALM_VERSION=\"0.0.1\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		254107F52A0A92A300A7CEC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		254107E72A0A92A200A7CEC1 /* Build configuration list for PBXProject "gps-cpp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				254107F12A0A92A300A7CEC1 /* Debug */,
+				254107F22A0A92A300A7CEC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		254107F32A0A92A300A7CEC1 /* Build configuration list for PBXNativeTarget "gps-cpp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				254107F42A0A92A300A7CEC1 /* Debug */,
+				254107F52A0A92A300A7CEC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		254107F62A0A937A00A7CEC1 /* XCRemoteSwiftPackageReference "realm-cpp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cpp";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		254107F72A0A937A00A7CEC1 /* realm-cpp-sdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 254107F62A0A937A00A7CEC1 /* XCRemoteSwiftPackageReference "realm-cpp" */;
+			productName = "realm-cpp-sdk";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 254107E42A0A92A200A7CEC1 /* Project object */;
+}
