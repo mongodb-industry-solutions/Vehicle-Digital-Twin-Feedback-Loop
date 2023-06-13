@@ -3,6 +3,7 @@
 ## Overall Ideas: TODO
 
 - [ ] Add over the air update functionality (Sync with partner SAs)
+- [ ] Add tiered sync for the onboard part and connect the cpp and typescript parts to it
 - [ ] Add other cloud provider integrations
 - [ ] Continuously monitor Realm/Atlas roadmap and add/emphasize new features
 
