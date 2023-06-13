@@ -14,7 +14,7 @@
 
 ## Mobile-Swift: TODO
 
-- [ ] 
+- [ ] Once the Realm geolocation features are implemented, add automatic location updates to the already added map view and integrate it into the gui.
 
 
 ## Observer-CPP: TODO
