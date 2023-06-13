@@ -1,0 +1,25 @@
+# Project Roadmap/TODOs
+
+## Overall: TODO
+
+- [ ] Add over the air update functionality
+- [ ] Add other cloud provider integrations
+- [ ] Continuously monitor Realm/Atlas roadmap and add/emphasize new features
+
+## Vehicle-TS: TODO
+
+- [ ] Udate data model to better align with VSS through deeper nesting: [HELP-46424](https://jira.mongodb.org/browse/HELP-46424)
+- [ ] Extend the application with the upcoming geospatial features: [RPM-338](https://jira.mongodb.org/browse/RPM-338)
+- [ ] Look into using asymmetric sync with stream processing [Architecture](https://docs.google.com/presentation/d/1L9Cxd7dfBd7OP4TzxlKzcMUk9Xy3CGnnspsldgQctNU/edit#slide=id.g23cefc6a482_0_7)
+
+
+## Observer-CPP: TODO
+
+- [ ] Udate data model to better align with VSS through deeper nesting: [HELP-46424](https://jira.mongodb.org/browse/HELP-46424)
+- [ ] Currently object listeners in the C++ sdk don't react to changes in nested objects. The swift sdk already supports key path listeners: [Key Path Listener](https://www.mongodb.com/docs/realm/sdk/swift/react-to-changes/#register-a-key-path-change-listener)
+
+
+## GPS-CPP: TODO
+
+- [ ] Udate data model to better align with VSS through deeper nesting: [HELP-46424](https://jira.mongodb.org/browse/HELP-46424)
+- [ ] Extend the application with the upcoming geospatial features: [RPM-338](https://jira.mongodb.org/browse/RPM-338)
