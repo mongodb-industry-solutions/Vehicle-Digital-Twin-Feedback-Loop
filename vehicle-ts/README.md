@@ -5,6 +5,11 @@ Here you will set up your vehicle simulator. We've provided three options for yo
 After you've completed one of the options, you should see the following: 
 ![image](https://github.com/mongodb-industry-solutions/Digital-Twins-With-AWS/blob/main/media/vehicle.png)
 
+## TODO
+
+- [ ] Udate data model to better align with VSS through deeper nesting: [HELP-46424](https://jira.mongodb.org/browse/HELP-46424)
+- [ ] Extend the application with the upcoming geospatial features: [RPM-338](https://jira.mongodb.org/browse/RPM-338)
+
 ## Prerequisites
 
 1. Install [Node.js](https://nodejs.org/)
