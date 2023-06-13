@@ -12,10 +12,10 @@
   "author": "Felix Reichenbach",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.22.3",
+    "@babel/plugin-proposal-decorators": "^7.22.5",
     "@types/node": "^17.0.45",
-    "@typescript-eslint/eslint-plugin": "^5.59.9",
-    "@typescript-eslint/parser": "^5.59.9",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
     "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
