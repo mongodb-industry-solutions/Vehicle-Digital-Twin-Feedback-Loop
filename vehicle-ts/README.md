@@ -9,6 +9,7 @@ After you've completed one of the options, you should see the following:
 
 - [ ] Udate data model to better align with VSS through deeper nesting: [HELP-46424](https://jira.mongodb.org/browse/HELP-46424)
 - [ ] Extend the application with the upcoming geospatial features: [RPM-338](https://jira.mongodb.org/browse/RPM-338)
+- [ ] Future option: Change asymmetric sync to integrate with stream processing
 
 ## Prerequisites
 
