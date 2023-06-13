@@ -110,6 +110,7 @@
         }
 
         //Display alert icon and message for battery status
+
         if (device.battery.status == "NOK") {
           alert_pic = alert_on_pic;
           alert_tooltip = alert_on_tooltip;
@@ -118,13 +119,15 @@
           alert_tooltip = alert_off_tooltip;
         }
 
+
         const content = `
           <div id="vehicle_section">
               <h1>${device.name}</h1>
               <hr class="my-4">
               <img id="vehicle_image" src="${vehicle_pic}" alt="Image of vehicle">
-              <p id="voltage">Voltage: ${device.battery.voltage}</p>
-              <p id="current">Current: ${device.battery.current}</p>
+              <p id="lat_longitude">Lat / Long: ${device.CurrentLocation ? device.CurrentLocation.Latitude : 'n/a'} / ${device.CurrentLocation ? device.CurrentLocation.Longitude : 'n/a'}</p>
+              <p id="voltage">Voltage: ${device.battery ? device.battery.voltage : 'n/a'}</p>
+              <p id="current">Current: ${device.battery ? device.battery.current : 'n/a'}</p>
               <p id="ison">${engine_status_tag}</p>
               <img id="engine_image" src="${engine_pic}" alt="Engine GIF" />
               <p id="vin">VIN: ${device._id}</p>

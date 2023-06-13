@@ -10,6 +10,16 @@ body {
 }
 
 /*Information about tags*/
+
+#lat_longitude {
+    position: absolute;
+    background-color: #E3FCF7;
+    border-radius: 5px;
+    width: 100px;
+    margin-left: 200px;
+    margin-top: -260px;
+}
+
 #vin {
     width: 250px;
     margin-left: 39%;

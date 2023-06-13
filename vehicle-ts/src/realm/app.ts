@@ -1,7 +1,8 @@
-import { Vehicle, Battery, Command, Component, Sensor, Measurement } from './schemas';
+import { Vehicle, Command, Component, Sensor, Measurement, Vehicle_CurrentLocation, Vehicle_VehicleIdentification, Battery, BatterySchema } from './schemas';
 import { appID, realmUser, vehicleConfig } from './config';
 import { ObjectId } from 'bson';
 import { setTimeout } from "timers/promises";
+import { schemaVersion } from 'realm';
 
 class RealmApp {
 
@@ -22,7 +23,7 @@ class RealmApp {
   async login() {
     await this.app.logIn(Realm.Credentials.emailPassword(realmUser.username, realmUser.password));
     this.realm = await Realm.open({
-      schema: [Vehicle, Battery, Command, Component, Sensor, Measurement],
+      schema: [Vehicle, BatterySchema, Vehicle_CurrentLocation, Vehicle_VehicleIdentification, Command, Component, Sensor, Measurement],
       sync: {
         user: this.app.currentUser!,
         flexible: true
@@ -35,12 +36,16 @@ class RealmApp {
       subscriptions.add(this.realm!.objects('Component').filtered(ownerID, { name: "component-filter" }));
     });
 
-    // Create vehicle object on application start
-    let vehicleInit = vehicleConfig;
-    vehicleInit.owner_id = this.app.currentUser!.id;
-    this.realm.write(() => {
-      this.vehicle = new Vehicle(this.realm, vehicleInit);
-    });
+    if (this.realm.objectForPrimaryKey('Vehicle', vehicleConfig._id)) {
+      console.log(`Vehicle ${vehicleConfig._id} found.`);
+      this.vehicle = this.realm.objectForPrimaryKey('Vehicle', vehicleConfig._id) as Vehicle;
+    } else {
+      // Create vehicle object on application start
+      this.realm.write(() => {
+        this.vehicle = new Vehicle(this.realm, this.app.currentUser!.id);
+      });
+      console.log(`Vehicle ${vehicleConfig._id} created.`);
+    }
     this.vehicle.addListener(this.processCommands.bind(this));
   }
 
@@ -52,7 +57,7 @@ class RealmApp {
   addComponent(name: string) {
     try {
       this.realm!.write(() => {
-        let component = new Component(this.realm, { _id: new ObjectId, name: name, owner_id: this.app.currentUser!.id });
+        let component = new Component(this.realm, name, this.app.currentUser!.id);
         this.vehicle.components!.push(component);
       });
       return { result: "Component created and related to " + this.vehicle.name };
@@ -132,7 +137,7 @@ class RealmApp {
       console.log(`Vehicle removed! ${changes}`);
     } else {
       if (changes.changedProperties == "commands") {
-        vehicle.commands?.forEach(async (command) => {
+        vehicle.commands?.forEach(async (command: Command) => {
           if (command.status == "submitted") {
             console.log(JSON.stringify(command));
             await this.self.realm.write(() => {
@@ -166,14 +171,17 @@ class RealmApp {
       // Remove all change listener
       this.vehicle.removeAllListeners();
       // Delete all vehicle and component entries of the current subscription
+      
       this.realm!.write(() => {
         this.realm!.deleteAll();
       });
       await this.realm?.syncSession?.uploadAllLocalChanges()
       console.log("Realm cleaned up!")
+      
     } catch (err) {
       console.error("Failed: ", err);
     }
+    console.log("Vehicle simulator stopped!")
   }
 }
 
