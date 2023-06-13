@@ -2,7 +2,7 @@
 
 ## Overall: TODO
 
-- [ ] Add over the air update functionality
+- [ ] Add over the air update functionality (Sync with partner SAs)
 - [ ] Add other cloud provider integrations
 - [ ] Continuously monitor Realm/Atlas roadmap and add/emphasize new features
 
