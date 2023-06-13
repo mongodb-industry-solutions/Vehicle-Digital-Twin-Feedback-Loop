@@ -78,15 +78,16 @@ struct VehicleDetailView: View {
                         }
                     }
                 }
-                Section(header: Text("Commands: \(vehicle.commands.count)")) {
-                    List {
-                        ForEach(vehicle.commands) { cmd in
-                            HStack {
-                                Text(cmd.command ?? "")
-                                Spacer()
-                                Text(cmd.status?.rawValue ?? "")
-                            }
-                        }
+                Section(header: Text("Location")) {
+                    HStack {
+                        Text("Latitude")
+                        Spacer()
+                        Text("\(vehicle.CurrentLocation?.Latitude ?? 0)")
+                    }
+                    HStack {
+                        Text("Longitude")
+                        Spacer()
+                        Text("\(vehicle.CurrentLocation?.Longitude ?? 0)")
                     }
                 }
                 Section(header: Text("Components: \(vehicle.components.count)")) {
@@ -94,6 +95,17 @@ struct VehicleDetailView: View {
                         ForEach(vehicle.components, id: \._id) { component in
                             HStack {
                                 Text(component.name ?? "")
+                            }
+                        }
+                    }
+                }
+                Section(header: Text("Commands: \(vehicle.commands.count)")) {
+                    List {
+                        ForEach(vehicle.commands) { cmd in
+                            HStack {
+                                Text(cmd.command ?? "")
+                                Spacer()
+                                Text(cmd.status?.rawValue ?? "")
                             }
                         }
                     }

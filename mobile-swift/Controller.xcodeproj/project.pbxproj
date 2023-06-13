@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15B56D1E2A32617F00E8C4A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B56D1D2A32617F00E8C4A9 /* MapView.swift */; };
 		630D2377282F058000EAD0C5 /* VehicleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D2376282F058000EAD0C5 /* VehicleDetailView.swift */; };
 		631657E22675F6B300D397C5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631657E12675F6B300D397C5 /* LoginView.swift */; };
 		631657E42675F70B00D397C5 /* VehiclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631657E32675F70B00D397C5 /* VehiclesView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15B56D1D2A32617F00E8C4A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		15D0988A284809F000AF5D90 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		630D2376282F058000EAD0C5 /* VehicleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailView.swift; sourceTree = "<group>"; };
 		631657E12675F6B300D397C5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				631657E32675F70B00D397C5 /* VehiclesView.swift */,
 				630D2376282F058000EAD0C5 /* VehicleDetailView.swift */,
 				63C9ABCF266967E100069D38 /* Model.swift */,
+				15B56D1D2A32617F00E8C4A9 /* MapView.swift */,
 				63C9ABBF266948D300069D38 /* Assets.xcassets */,
 				63C9ABC4266948D300069D38 /* Info.plist */,
 				63C9ABC1266948D300069D38 /* Preview Content */,
@@ -125,8 +128,9 @@
 		63C9ABB0266948D200069D38 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					63C9ABB7266948D200069D38 = {
 						CreatedOnToolsVersion = 12.5;
@@ -172,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15B56D1E2A32617F00E8C4A9 /* MapView.swift in Sources */,
 				630D2377282F058000EAD0C5 /* VehicleDetailView.swift in Sources */,
 				63C9ABBE266948D200069D38 /* ContentView.swift in Sources */,
 				631657E42675F70B00D397C5 /* VehiclesView.swift in Sources */,
