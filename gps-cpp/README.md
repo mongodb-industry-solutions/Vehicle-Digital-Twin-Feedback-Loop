@@ -1,4 +1,4 @@
-# observer-cpp
+# gps-cpp
 
-- Listener for changes on the vehicle and logs them to console.
-- TODO: Currently lacks support for nested objects (general Cpp SDK limitation) and notifications for nested/attributes in substructures don't trigger notifications -> feature already implemented in the Swift SDK
+- GPS unit simulating a car driving around based upon GPS coordinates in an XML file.
+- Upcoming geospatial feature: https://jira.mongodb.org/browse/RPM-338
