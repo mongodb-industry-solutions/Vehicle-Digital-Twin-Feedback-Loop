@@ -2,7 +2,7 @@
 
 ## Overall Ideas: TODO
 
-- [ ] Add over the air update functionality (Sync with partner SAs)
+- [ ] Add over the air update functionality (Sync with partner SAs / build simple command into mobile app -> updated to v3 -> trigger on the vehicle to download version from internet e.g. github)
 - [ ] Add tiered sync for the onboard part and connect the cpp and typescript parts to it
 - [ ] Continuously monitor Realm/Atlas roadmap and add/emphasize new features
 
