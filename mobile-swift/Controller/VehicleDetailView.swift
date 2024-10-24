@@ -88,7 +88,29 @@ class VehicleDetailViewModel: ObservableObject {
         }
     }
 
+    func saveSentCommand() {
+        let query = """
+        UPDATE vehicle SET
+            commands = :commands
+        WHERE _id == :_id
+        """
+        Task {
+            do {
+                try await dittoStore.execute(
+                    query: query,
+                    arguments: [
+                        "commands": commands,
+                        "_id": vehicle._id
+                    ]
+                )
+            } catch {
+                print("VehicleDetailViewModel - ERROR saving changes: \(error.localizedDescription)")
+            }
+        }
+    }
+
     func addCommand(command: Command) {
+        print("add command")
         commands.append(command)
         let query = """
         UPDATE vehicle SET
@@ -235,8 +257,11 @@ struct CommandView: View {
     
     func sendCommand(){
         //$vehicle.commands.append(Command(value: ["command": selectedCommand, "status": CmdStatus.submitted] as [String : Any]))
+        print("Send command")
         let newCommand = Command(command: selectedCommand, status: "submitted", ts: "\(Date())")
         viewModel.addCommand(command: newCommand)
+        viewModel.saveSentCommand()
+        print(commands)
         isPresented = false
     }
 }
