@@ -89,6 +89,7 @@ class VehicleDetailViewModel: ObservableObject {
     }
 
     func saveSentCommand() {
+        print("saveSentCommand")
         let query = """
         UPDATE vehicle SET
             commands = :commands
@@ -96,13 +97,15 @@ class VehicleDetailViewModel: ObservableObject {
         """
         Task {
             do {
-                try await dittoStore.execute(
+                let res = try await dittoStore.execute(
                     query: query,
                     arguments: [
                         "commands": commands,
                         "_id": vehicle._id
                     ]
                 )
+                print("res")
+                print(res)
             } catch {
                 print("VehicleDetailViewModel - ERROR saving changes: \(error.localizedDescription)")
             }
