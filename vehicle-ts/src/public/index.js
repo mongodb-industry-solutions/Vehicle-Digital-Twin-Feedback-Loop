@@ -46,6 +46,7 @@ $(document).ready(function () {
         $("#vehicle_section").html(content);
 
         updateComponent(device);
+        updateComands(device);
         updateMeasurements(device);
         updateTelemetrySliders(device)
     }
@@ -122,6 +123,7 @@ $(document).ready(function () {
     const eventSource = new EventSource(`/subscribe`);
     eventSource.onmessage = function (event) {
         try {
+            console.log("onmessage")
             const vehicleData = JSON.parse(event.data);
             updateVehicle(vehicleData);
         } catch (error) {
