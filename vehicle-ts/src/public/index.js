@@ -57,6 +57,21 @@ $(document).ready(function () {
         $("#number_components").html(`Components: <strong>${componentsCount}</strong>`);
     }
 
+    // Function to process new commands
+    function updateComands(device){
+        console.log('updateComands', device.commands)
+        $.ajax({
+            url: `${window.location.origin}/process_commands`,
+            type: "POST",
+            data: { commands: device.commands },
+            success: (result) => {
+                console.log(result.message);
+                // updateMeasurements(); UPDATE BATERRY ICON
+            },
+            error: (error) => { console.error(`${error}`) }
+        });
+    }
+
     // Function to update the measurements bucket
     function updateMeasurements() {
         $("#measurements").html(`Bucket: ${bucketCount}/20`);
@@ -124,7 +139,7 @@ $(document).ready(function () {
     eventSource.onmessage = function (event) {
         try {
             console.log("onmessage")
-            const vehicleData = JSON.parse(event.data);
+            const vehicleData = JSON.parse(event.data);  
             updateVehicle(vehicleData);
         } catch (error) {
             console.error('Error parsing JSON:', error, 'Received data:', event.data);
