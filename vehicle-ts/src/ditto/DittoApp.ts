@@ -15,6 +15,11 @@ interface Component {
   name: string
   owner_id: string;
 }
+interface Command {
+  ts: string
+  command: string;
+  status: string;
+}
 
 class DittoApp {
   private ditto: Ditto;
@@ -52,6 +57,8 @@ class DittoApp {
           })[0] || null;
 
         this.notifyClients(this.vehicle);
+        console.log("CHANGES ON CAR")
+        // cal processCommands
       }
     );
     console.log("Connected to Ditto and listening for changes");
@@ -232,6 +239,46 @@ class DittoApp {
       return false
     }
   }
+
+  async processCommands( commands: Command[]) {
+    console.log('processCommands dittoApp', commands)
+    for (const command of commands) {
+      if (command.status === "submitted") {
+        console.log(JSON.stringify(command));
+        command.status = "inProgress";
+      }
+    }
+    console.log('all commands in progress', commands)
+    // let updateQuery = ` UPDATE COLLECTION vehicle 
+    //                     SET commands=(:doc1) 
+    //                     WHERE _id=='${this.vehicle._id}'`;
+    // let args = {
+    //   doc1: JSON.stringify(commands),
+    // };
+    // await this.ditto.store.execute(updateQuery, args);
+
+    // Create a delay function that returns a Promise
+    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+    await delay(5000);
+
+    this.resetBattery();
+
+    for (const command of commands) {
+      if (command.status === "submitted") {
+        console.log(JSON.stringify(command));
+        command.status = "completed";
+      }
+    }
+    console.log('all commands in progress', commands)
+    // updateQuery = ` UPDATE COLLECTION vehicle 
+    //                 SET commands=(:doc1) 
+    //                 WHERE _id=='${this.vehicle._id}'`;
+    // args = {
+    //   doc1: JSON.stringify(commands),
+    // };
+    // await this.ditto.store.execute(updateQuery, args);
+  }
+
 }
 
 export default DittoApp;

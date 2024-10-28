@@ -97,6 +97,17 @@ app.post("/stop_sync", async (req, res) => {
   }
 });
 
+app.post("/process_commands", async (req, res) => {
+  try {
+    console.log('process_commands', req.body.commands)
+    const result = await dittoApp.processCommands(req.body.commands);
+    res.send(result);
+  } catch (error) {
+    console.error("Error processing :", error);
+    res.status(500).send("Failed to stop sync.");
+  }
+});
+
 // Start the Express server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
