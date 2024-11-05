@@ -58,7 +58,6 @@ class DittoApp {
 
         this.notifyClients(this.vehicle);
         console.log("CHANGES ON CAR")
-        // cal processCommands
       }
     );
     console.log("Connected to Ditto and listening for changes");
@@ -241,21 +240,28 @@ class DittoApp {
   }
 
   async processCommands( commands: Command[]) {
+    if(!commands)
+        return
     console.log('processCommands dittoApp', commands)
+    let vehicleUpdated = null;
+    let processedCommands : Command[] = []
     for (const command of commands) {
-      if (command.status === "submitted") {
-        console.log(JSON.stringify(command));
-        command.status = "inProgress";
+      command.status = (command.status === "submitted") ? "inProgress" : command.status;
+      const processedCommand: Command = {
+        ts: command.ts,
+        command: command.command,
+        status: command.status
       }
+      processedCommands.push(processedCommand)
     }
-    console.log('all commands in progress', commands)
-    // let updateQuery = ` UPDATE COLLECTION vehicle 
-    //                     SET commands=(:doc1) 
-    //                     WHERE _id=='${this.vehicle._id}'`;
-    // let args = {
-    //   doc1: JSON.stringify(commands),
-    // };
-    // await this.ditto.store.execute(updateQuery, args);
+    await this.ditto.store.collection("vehicle")
+      .find("_id == $args._id", { _id: this.vehicle._id })
+      .update((mutableDocs: MutableDocument[]) => {
+        mutableDocs.forEach(doc => {
+          doc.at('commands').set(processedCommands)
+          vehicleUpdated = doc.value
+        })
+      });
 
     // Create a delay function that returns a Promise
     const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -263,20 +269,21 @@ class DittoApp {
 
     this.resetBattery();
 
-    for (const command of commands) {
-      if (command.status === "submitted") {
-        console.log(JSON.stringify(command));
-        command.status = "completed";
-      }
+    for (const command of processedCommands) {
+      command.status = (command.status === "inProgress") ? "completed" : command.status;
     }
-    console.log('all commands in progress', commands)
-    // updateQuery = ` UPDATE COLLECTION vehicle 
-    //                 SET commands=(:doc1) 
-    //                 WHERE _id=='${this.vehicle._id}'`;
-    // args = {
-    //   doc1: JSON.stringify(commands),
-    // };
-    // await this.ditto.store.execute(updateQuery, args);
+    await this.ditto.store.collection("vehicle")
+      .find("_id == $args._id", { _id: this.vehicle._id })
+      .update((mutableDocs: MutableDocument[]) => {
+        mutableDocs.forEach(doc => {
+          doc.at('commands').set(processedCommands)
+          vehicleUpdated = doc.value
+        })
+      });
+    return {
+      message: `Commands processed to vehicle ${this.vehicle.name}`,
+      vehicle: vehicleUpdated
+    };
   }
 
 }

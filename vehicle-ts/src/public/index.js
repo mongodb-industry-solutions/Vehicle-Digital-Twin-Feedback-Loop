@@ -58,7 +58,19 @@ $(document).ready(function () {
     }
 
     // Function to process new commands
+    let processingCommands = false
     function updateComands(device){
+        let skipUpdate = true;
+        for (const command of device.commands) {
+            if(command.status !== 'completed'){
+                // if there is at least one commands that needs to be processed we do not skip this process
+                skipUpdate = false
+                break;
+            }
+        }
+        if(skipUpdate || processingCommands === true)
+            return
+        processingCommands = true
         console.log('updateComands', device.commands)
         $.ajax({
             url: `${window.location.origin}/process_commands`,
@@ -66,9 +78,14 @@ $(document).ready(function () {
             data: { commands: device.commands },
             success: (result) => {
                 console.log(result.message);
-                // updateMeasurements(); UPDATE BATERRY ICON
+                updateMeasurements();
+                processingCommands = false
+
             },
-            error: (error) => { console.error(`${error}`) }
+            error: (error) => { 
+                console.error(`${error}`);
+                processingCommands = false
+            }
         });
     }
 
@@ -138,7 +155,7 @@ $(document).ready(function () {
     const eventSource = new EventSource(`/subscribe`);
     eventSource.onmessage = function (event) {
         try {
-            console.log("onmessage")
+            console.log("onmessage", event)
             const vehicleData = JSON.parse(event.data);  
             updateVehicle(vehicleData);
         } catch (error) {

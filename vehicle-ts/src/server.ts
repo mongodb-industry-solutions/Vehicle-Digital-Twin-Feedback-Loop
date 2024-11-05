@@ -48,7 +48,6 @@ app.post("/add_sensor", async (req, res) => {
 app.post("/add_component", async (req, res) => {
   try {
     const result = await dittoApp.addComponent(req.body);
-    console.log(result);
     res.send(result);
   } catch (error) {
     console.error("Error adding sensor data:", error);
