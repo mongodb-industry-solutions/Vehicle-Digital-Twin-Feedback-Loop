@@ -113,7 +113,6 @@ class VehicleDetailViewModel: ObservableObject {
     }
 
     func addCommand(command: Command) {
-        print("add command")
         commands.append(command)
         let query = """
         UPDATE vehicle SET
@@ -260,11 +259,9 @@ struct CommandView: View {
     
     func sendCommand(){
         //$vehicle.commands.append(Command(value: ["command": selectedCommand, "status": CmdStatus.submitted] as [String : Any]))
-        print("Send command")
         let newCommand = Command(command: selectedCommand, status: "submitted", ts: "\(Date())")
         viewModel.addCommand(command: newCommand)
         viewModel.saveSentCommand()
-        print(commands)
         isPresented = false
     }
 }

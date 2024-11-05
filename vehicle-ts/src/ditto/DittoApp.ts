@@ -57,7 +57,6 @@ class DittoApp {
           })[0] || null;
 
         this.notifyClients(this.vehicle);
-        console.log("CHANGES ON CAR")
       }
     );
     console.log("Connected to Ditto and listening for changes");
