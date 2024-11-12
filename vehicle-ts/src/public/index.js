@@ -187,8 +187,16 @@ $(document).ready(function () {
     // Track telemetry button click event
     $("#add_sensor").click(onAddSensor);
 
-    // Reset battery button click event
-    $("#reset_battery").click(function () {
+    // reset vehicle click event
+    $("#reset_vehicle").click(function (){
+        console.log('reset vehicle to initial state')
+        setSyncVehicle(true)
+        resetBatery()
+        stopVehicleEngine()
+        clearVehicleComponents()
+    });
+
+    function resetBatery() {
         $.ajax({
             url: `${window.location.origin}/reset`,
             type: "GET",
@@ -214,7 +222,66 @@ $(document).ready(function () {
                 console.error('Error resetting battery:', error);
             }
         });
-    });
+    }
+
+    function stopVehicleEngine() {
+        $.ajax({
+            url: `${window.location.origin}/stop_engine`,
+            type: "POST",
+            success: (result) => {
+                console.log("Engine stopped successful.");
+                $.ajax({
+                    url: `${window.location.origin}/vehicle`,
+                    type: "GET",
+                    success: (result) => {
+                        try {
+                            const vehicle = result;
+                            updateVehicle(vehicle);
+                        } catch (error) {
+                            console.error('Error parsing vehicle data:', error);
+                        }
+                    },
+                    error: (error) => {
+                        console.error('Error fetching updated vehicle data:', error);
+                    }
+                });
+            },
+            error: (error) => {
+                console.error('Error resetting battery:', error);
+            }
+        });
+    }
+
+    function clearVehicleComponents() {
+        $.ajax({
+            url: `${window.location.origin}/clear_components`,
+            type: "POST",
+            success: (result) => {
+                console.log("Clear components successful.");
+                $.ajax({
+                    url: `${window.location.origin}/vehicle`,
+                    type: "GET",
+                    success: (result) => {
+                        try {
+                            const vehicle = result;
+                            updateVehicle(vehicle);
+                        } catch (error) {
+                            console.error('Error parsing vehicle data:', error);
+                        }
+                    },
+                    error: (error) => {
+                        console.error('Error fetching updated vehicle data:', error);
+                    }
+                });
+            },
+            error: (error) => {
+                console.error('Error resetting battery:', error);
+            }
+        });
+    }
+
+    // Reset battery button click event
+    $("#reset_battery").click(resetBatery);
 
     // trigger the battery update on the on change event of the input
     $("#battery_current").change(function (e){
@@ -228,15 +295,14 @@ $(document).ready(function () {
         onAddSensor();
     })
 
-    // Trigger to toggle the sync status
-    $("#sync_toggle").change(function (e){
-        const startSync = e.target.checked
+    function setSyncVehicle (startSync) {
         $.ajax({
             url: `${window.location.origin}/${startSync ? 'start_sync' : 'stop_sync'}`,
             type: "POST",
             data: {},
             success: (result) => {
                 console.log(JSON.stringify(result));
+                $("#sync_toggle").prop('checked', startSync)
             },
             error: (error) => {
                 console.error(`${error}`);
@@ -244,5 +310,10 @@ $(document).ready(function () {
                 $("#sync_toggle").prop('checked', !startSync)
             }
         });
+    }
+    // Trigger to toggle the sync status
+    $("#sync_toggle").change(function (e){
+        const startSync = e.target.checked
+        setSyncVehicle(startSync)
     })
 });
