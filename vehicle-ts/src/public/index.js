@@ -194,6 +194,7 @@ $(document).ready(function () {
         resetBatery()
         stopVehicleEngine()
         clearVehicleComponents()
+        clearVehicleCommands()
     });
 
     function resetBatery() {
@@ -275,7 +276,35 @@ $(document).ready(function () {
                 });
             },
             error: (error) => {
-                console.error('Error resetting battery:', error);
+                console.error('Error clearing vehicle components:', error);
+            }
+        });
+    }
+
+    function clearVehicleCommands() {
+        $.ajax({
+            url: `${window.location.origin}/clear_commands`,
+            type: "POST",
+            success: (result) => {
+                console.log("Clear commands successful.");
+                $.ajax({
+                    url: `${window.location.origin}/vehicle`,
+                    type: "GET",
+                    success: (result) => {
+                        try {
+                            const vehicle = result;
+                            updateVehicle(vehicle);
+                        } catch (error) {
+                            console.error('Error parsing vehicle data:', error);
+                        }
+                    },
+                    error: (error) => {
+                        console.error('Error fetching updated vehicle data:', error);
+                    }
+                });
+            },
+            error: (error) => {
+                console.error('Error clearing commands:', error);
             }
         });
     }

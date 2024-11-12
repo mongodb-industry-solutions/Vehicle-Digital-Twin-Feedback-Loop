@@ -321,6 +321,23 @@ class DittoApp {
     };
   }
 
+  async clearCommands() {
+    if (this.vehicle) {
+      try {
+        const updateQuery = ` UPDATE COLLECTION vehicle SET commands=(:doc1) WHERE _id=='${this.vehicle._id}' `;
+        const args = {
+          doc1: [],
+        };
+
+        await this.ditto.store.execute(updateQuery, args);
+        console.log("Vehicle cleared commands successfully.");
+      } catch (err) {
+        console.error("Error clearing commands in Ditto:", err);
+      }
+    } else {
+      console.error("Vehicle not found in Ditto store.");
+    }
+  }
 }
 
 export default DittoApp;

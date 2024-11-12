@@ -127,6 +127,16 @@ app.post("/process_commands", async (req, res) => {
   }
 });
 
+app.post("/clear_commands", async (req, res) => {
+  try {
+    const result = await dittoApp.clearCommands();
+    res.send(result);
+  } catch (error) {
+    console.error("Error clearing commands:", error);
+    res.status(500).send("Failed to clear commands.");
+  }
+});
+
 // Start the Express server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
